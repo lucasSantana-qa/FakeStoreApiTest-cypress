@@ -17,4 +17,36 @@ describe('Products', () => {
         cy.get('@response').its('status').should('be.eql', 200)
         cy.get('@response').should('have.property', 'body')
     })
+            it('POST add new product', () => {
+        cy.fixture("example").then(bodyReq => {
+            cy.request({
+                url: '/products',
+                method: 'POST',
+                body: {
+                    "id": "",
+                    "title": "Teste cy",
+                    "price": 1200.00,    
+                    "description": "A cypress test",
+                    "category": "Test",
+                    "image": "http://test.com"              
+                  }
+            }).as('response').then(res => {
+                console.log(res)
+            })
+            cy.get('@response').its('status').should('be.eql', 201)
+            cy.get('@response').its('body').should('have.property', 'id')
+            cy.get('@response').its('body').should('have.property', 'title')
+            cy.get('@response').its('body').should('have.property', 'image')
+            cy.get('@response').its('body').should('have.property', 'description')
+            cy.get('@response').its('body').should('have.property', 'price')
+            cy.get('@response').its('body').should('have.property', 'category')
+        })
+    })
+    it.only('GET a single product', () => {
+        cy.request({
+            url: `/products/1`,
+            method: 'GET'
+        }).as('response')
+        cy.get('@response').its('status').should('be.eql', 200)
+    })
 })
