@@ -42,7 +42,7 @@ describe('Products', () => {
             cy.get('@response').its('body').should('have.property', 'category')
         })
     })
-    it.only('GET a single product', () => {
+    it('GET a single product', () => {
         cy.request({
             url: `/products/1`,
             method: 'GET'
