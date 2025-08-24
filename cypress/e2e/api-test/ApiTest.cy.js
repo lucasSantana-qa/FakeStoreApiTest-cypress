@@ -69,5 +69,5 @@ describe('Products', () => {
         cy.get('@response').its('body.description').should('be.eql', 'Alterado')  
         cy.get('@response').its('body.image').should('be.eql', 'http://alterado.img')
         cy.get('@response').its('body.price').should('be.eql', 100.00)
-     })
+    })
 })
