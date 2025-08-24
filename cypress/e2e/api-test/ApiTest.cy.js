@@ -50,7 +50,7 @@ describe('Products', () => {
         cy.get('@response').its('status').should('be.eql', 200)
     })
 
-    it.only('Update a product', () => {
+    it('Update a product', () => {
       cy.request({
         url: '/products/1',
         method: 'PUT',
