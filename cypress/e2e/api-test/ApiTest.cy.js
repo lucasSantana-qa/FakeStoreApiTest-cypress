@@ -49,4 +49,25 @@ describe('Products', () => {
         }).as('response')
         cy.get('@response').its('status').should('be.eql', 200)
     })
+
+    it.only('Update a product', () => {
+      cy.request({
+        url: '/products/1',
+        method: 'PUT',
+        body: {
+            title: "Alterado",
+            price: 100.00,
+            description: "Alterado",
+            category: "Alterado",
+            image: "http://alterado.img"
+
+        }
+        }).as('response')
+        cy.get('@response').its('status').should('be.eql', 200)
+        cy.get('@response').its('body.category').should('be.eql', 'Alterado')   
+        cy.get('@response').its('body.title').should('be.eql', 'Alterado')  
+        cy.get('@response').its('body.description').should('be.eql', 'Alterado')  
+        cy.get('@response').its('body.image').should('be.eql', 'http://alterado.img')
+        cy.get('@response').its('body.price').should('be.eql', 100.00)
+     })
 })
