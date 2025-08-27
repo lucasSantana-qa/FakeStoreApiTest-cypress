@@ -70,4 +70,13 @@ describe('Products', () => {
         cy.get('@response').its('body.image').should('be.eql', 'http://alterado.img')
         cy.get('@response').its('body.price').should('be.eql', 100.00)
     })
+
+    it.only('DELETE a product', () => {
+        cy.request({
+            url: '/products/1',
+            method: 'DELETE'
+        }).then(res => {
+            cy.wrap(res).its('status').should('be.eql', 200)
+        })
+    });
 })
