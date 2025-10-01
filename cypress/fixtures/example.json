@@ -1,8 +1,0 @@
-{
-  "id": "",
-  "title": "Teste cy",
-  "price": 1200.00,    
-  "description": "A cypress test",
-  "category": "Test",
-  "image": "http://test.com"
-}
