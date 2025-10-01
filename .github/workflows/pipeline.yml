@@ -28,7 +28,7 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: relatório de testes de performance
+          name: relatório de testes de api
           path: mochawesome-report
 
       - name: publish report
@@ -36,4 +36,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: report
+          publish_dir: mochawesome-report
