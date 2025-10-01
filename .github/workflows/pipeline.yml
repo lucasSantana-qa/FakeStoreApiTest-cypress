@@ -30,6 +30,9 @@ jobs:
         with:
           name: relatório de testes de api
           path: mochawesome-report
+        
+      - name: Renomear para index.html
+        run: cp mochawesome-report/mochawesome.html mochawesome-report/index.html
 
       - name: publish report
         uses: peaceiris/actions-gh-pages@v4
