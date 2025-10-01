@@ -1,5 +1,7 @@
 name: Pipeline CI
 
+permissions: 
+  contents: write
 on:
   push:
     branches:
