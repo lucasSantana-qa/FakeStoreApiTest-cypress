@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: relatório de testes de performance
-          path: cypress/mochawesome-report
+          path: mochawesome-report
 
       - name: publish report
         uses: peaceiris/actions-gh-pages@v4
