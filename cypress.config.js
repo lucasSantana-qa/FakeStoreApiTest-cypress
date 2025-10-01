@@ -6,4 +6,11 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://fakestoreapi.com'
   },
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/results',
+    overwrite: false,
+    html: false,
+    json: true,
+  },
 });
