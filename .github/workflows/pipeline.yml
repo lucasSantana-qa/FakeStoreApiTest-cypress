@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: install cypress
-        run: npm intall cypress
+        run: npm install cypress
         
       - name: Run Cypress tests and generate report
         run: npx cypress run --reporter mochawesome
