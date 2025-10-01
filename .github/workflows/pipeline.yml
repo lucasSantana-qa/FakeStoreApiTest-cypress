@@ -13,12 +13,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
-      - name: install cypress
-        run: npm install cypress
         
       - name: Run Cypress tests and generate report
-        run: npx cypress run --reporter mochawesome
+        uses: cypress-io/github-action@v6
+        with:
+          command: npx cypress run --reporter mochawesome
       
       - name: Combine generate json files
         run: npx mochawesome-merge "cypress/results/*.json" > mochawesome.json
@@ -26,13 +25,11 @@ jobs:
       - name: Generate HTML report
         run: npx marge mochawesome.json
 
-      - run: ls & mkdir report & mv mochawesome.html report
-
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: relatório de testes de performance
-          path: report
+          path: cypress/mochawesome-report
 
       - name: publish report
         uses: peaceiris/actions-gh-pages@v4
